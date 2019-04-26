@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.item_recycler_view.view.*
+import android.widget.Toast
 
 class CustomRecyclerAdapter(val items: ArrayList<RecyclerItem>, val context: Context): RecyclerView.Adapter<CustomRecyclerAdapter.ItemViewHolder>() {
 
@@ -24,6 +25,10 @@ class CustomRecyclerAdapter(val items: ArrayList<RecyclerItem>, val context: Con
     // ホルデーにデータをバインディング
     override fun onBindViewHolder(p0: CustomRecyclerAdapter.ItemViewHolder, p1: Int) {
         p0.view.itemNameTv.text = items[p1].getItemName()
+        // クリックリスナー追加、クリックしたらトストで名前が出る
+        p0.view.setOnClickListener {
+            Toast.makeText(context, items[p1].getItemName(), Toast.LENGTH_SHORT).show()
+        }
     }
 
     // カスタムビューホルダー

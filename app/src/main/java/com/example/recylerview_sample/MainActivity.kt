@@ -9,7 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 
 class MainActivity : AppCompatActivity() {
 
-    private val names: ArrayList<String> = arrayListOf("Charlie","Andrew","Han","Liz","Thomas","Sky","Andy","Lee","Park")
+    private val names: ArrayList<String> = arrayListOf("Charlie","Andrew","Han","Liz","Thomas","Sky","Andy","Lee","Park", "坂本", "稲森", "渡辺", "吉田", "櫻井")
 
     private val mItems: ArrayList<RecyclerItem> = ArrayList()
 
@@ -19,14 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         // Loads animals into the ArrayList
         addItems()
-        // Activity 에서 kotlin extensions을 사용하여 별도의 findViewById 없이 View를 사용할 수 있습니다.
+        // Activityでkotlin extensionsを私用してfindViewByIdなくともViewの呼び出しができる
         recycler_view.adapter = CustomRecyclerAdapter(mItems, this)
-        // 다양한 LayoutManager 가 있습니다. 원하시는 방법을 선택해주세요.
-        // 지그재그형의 그리드 형식
+        // recyclerviewはいろいろなLayoutManagerがある
+        // ジグザグのグリッド形式
         //recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        // 그리드 형식
+        // 普通のグリッド形式
         //recyclerView.setLayoutManager(new GridLayoutManager(this,4));
-        // 가로 또는 세로 스크롤 목록 형식
+        // 横又は縦のスクロール形式
         recycler_view.layoutManager = LinearLayoutManager(this)
     }
 
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         for (name in names) {
             mItems.add(RecyclerItem(name))
         }
-        // 데이터 추가가 완료되었으면 notifyDataSetChanged() 메서드를 호출해 데이터 변경 체크를 실행합니다.
+        // データ追加が完了したらnotifyDataSetChangedメソッドを呼び出して更新する
         recycler_view.adapter?.notifyDataSetChanged()
     }
 }
